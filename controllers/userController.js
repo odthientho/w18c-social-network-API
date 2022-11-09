@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
     async getUsers(req, res) {
@@ -34,12 +34,27 @@ module.exports = {
                 req.body,
                 { 
                     runValidators: true, 
-                    new: true, 
-                    context: 'query' 
+                    new: true
                 },
             ).select('-__v');
             if (!user) res.status(404).json({ message: "No User Found" });
             else res.status(200).json(user);
+        } catch(err) {
+            res.status(500).json(err.message);
+        }
+    },
+    async deleteUser(req, res) {
+        try {
+            const user = await User.findOneAndDelete(
+                { _id: req.params.userId }
+            );
+            user.thoughts.forEach(async thoughtId => {
+                const thought = await Thought.findOneAndDelete({
+                    _id: thoughtId
+                });
+            });
+            if (!user) res.status(404).json({ message: "No User Found" });
+            else res.status(200).json({ message: "User And Associated Thoughts Deleted."});
         } catch(err) {
             res.status(500).json(err.message);
         }
