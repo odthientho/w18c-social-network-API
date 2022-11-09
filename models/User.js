@@ -16,7 +16,7 @@ const userSchema = new Schema(
           validator: function(e) {
               return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(e);
           },
-          message: "Valid Email?"
+          message: "Invalid"
       },
     },
     thoughts: [{
@@ -32,6 +32,7 @@ const userSchema = new Schema(
     toJSON: {
       virtuals: true,
     },
+    id: false,
   }
 );
 
@@ -39,6 +40,6 @@ userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
 });
 
-const User = model('User', studentSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
