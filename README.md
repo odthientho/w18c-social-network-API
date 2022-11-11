@@ -19,7 +19,7 @@ This is a back-end application to build an API for a social network web applicat
 ## Walkthrough-Video
 Please follow the walk-through video below.
 
-- [Walking-through video for Social Network API](https://drive.google.com/file/d/1oKQoC0oeZSAn54cGxOyBE0RQZFgv2uoF/view)
+- [Walking-through video for Social Network API](https://drive.google.com/file/d/10oR_5ZIF05wQKfULWCZ2TEmsKCtj1lql/view)
 
 ## Questions
 If you have any questions about the repo, open an issue or contact me directly at odthientho@gmail.com. You can find more of my works at [odthientho](https://github.com/odthientho/).
